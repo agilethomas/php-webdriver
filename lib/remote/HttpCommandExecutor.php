@@ -79,6 +79,7 @@ class HttpCommandExecutor implements WebDriverCommandExecutor {
     'sendKeys' =>          array('method' => 'POST', 'url' => '/session/:sessionId/keys'),
     'sendKeysToAlert' =>    array('method' => 'POST', 'url' => '/session/:sessionId/alert_text'),
     'sendKeysToElement' => array('method' => 'POST', 'url' => '/session/:sessionId/element/:id/value'),
+    'getValue'          => array('method' => 'GET', 'url' => '/session/:sessionId/element/:id/value'),
     'setImplicitWaitTimeout' => array('method' => 'POST', 'url' => '/session/:sessionId/timeouts/implicit_wait'),
     'setScreenOrientation' => array('method' => 'POST', 'url' => '/session/:sessionId/orientation'),
     'setPageLoadTimeout' => array('method' => 'POST', 'url' => '/session/:sessionId/timeouts'),
@@ -95,6 +96,7 @@ class HttpCommandExecutor implements WebDriverCommandExecutor {
     'touchMove'              => array('method' => 'POST', 'url' => '/session/:sessionId/touch/move'),
     'touchScroll'            => array('method' => 'POST', 'url' => '/session/:sessionId/touch/scroll'),
     'touchUp'                => array('method' => 'POST', 'url' => '/session/:sessionId/touch/up'),
+    'touchElement' =>      array('method' => 'POST', 'url' => '/session/:sessionId/element/:id/touch'),
   );
 
   protected $url;

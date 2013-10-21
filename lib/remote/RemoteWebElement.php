@@ -248,14 +248,35 @@ class RemoteWebElement implements WebDriverElement, WebDriverLocatable {
    * Simulate typing into an element, which may set its value.
    *
    * @param mixed $value The data to be typed.
+   * @param boolean $done_after Press the enter/blur to fire change event
    * @return WebDriverElement The current instance.
    */
-  public function sendKeys($value) {
+  public function sendKeys($value, $done_after = false) {
     $params = array(
       'value' => WebDriverKeys::encode($value),
+      'done_after' => $done_after,
       ':id'   => $this->id,
     );
     $this->executor->execute('sendKeysToElement', $params);
+    return $this;
+  }
+
+  /**
+   * Get the current value of the element
+   *
+   * @return string The value of the element
+   */
+  public function getValue() {
+    return $this->executor->execute('getValue', array(':id' => $this->id));
+  }
+
+  /**
+   * Touch the element
+   *
+   * @return WebDriverElement The current instance.
+   */
+  public function touch($relative_x, $relative_y) {
+    $this->executor->execute('touchElement', array(':id' => $this->id));
     return $this;
   }
 
